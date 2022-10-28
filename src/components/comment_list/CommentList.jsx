@@ -7,10 +7,7 @@ const CommentList = ({ postId }) => {
 
     const getComments = async () => {
         const url = `http://localhost:4001/posts/${postId}/comments`
-        console.log(url);
         const resp = await axios.get(url)
-        console.log(resp.data)
-        console.log(typeof comments)
         setComments(resp.data)
         return resp.status
     }

@@ -6,11 +6,23 @@ const PostForm = () => {
     
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
-
+    const url = 'http://localhost:4000/posts'
     const handleSubmit = async (event) => {
         event.preventDefault()
-        const resp = await axios.post('http://localhost:4000/posts', { title, body })  
-        console.log(resp); 
+
+        let resp = ''
+        if (body === '' || title === '') {
+            resp = ''
+        }
+            
+        else {
+            resp = await axios.post(url, { title, body })
+            
+            setBody('')
+            setTitle('')
+        }
+        
+        return resp
     }
     
     return (

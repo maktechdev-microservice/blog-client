@@ -6,7 +6,7 @@ const PostList = () => {
     const [posts, setPosts] = useState({})
 
     const getPosts = async () => {
-        const resp = await axios.get('http://localhost:4000/posts')
+        const resp = await axios.get('http://localhost:4002/posts')
         setPosts(resp.data);
         return resp.status
     }
@@ -22,7 +22,7 @@ const PostList = () => {
         <h2>Blogs</h2>
         <div className="d-flex flex-row flex-wrap justify-content-start gap-2">
           {
-            renderedPosts.map(({ id, title, body }) => <Post key={id} id={id} title={title} body={body} />)
+            renderedPosts.map(({ id, title, body, comments }) => <Post key={id} id={id} title={title} body={body} comments={comments} />)
           }
         </div>
     </>

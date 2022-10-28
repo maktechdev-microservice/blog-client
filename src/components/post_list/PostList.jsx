@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios";
+import axios from "axios"
+import Post from "./Post"
 
 const PostList = () => {
     const [posts, setPosts] = useState({})
@@ -17,18 +18,14 @@ const PostList = () => {
     const renderedPosts = Object.values(posts)
 
   return (
-      <div >
-          
+      <>         
         <h2>Blogs</h2>
-        <div className="d-flex flex-row flex-wrap justify-content-between">
+        <div className="d-flex flex-row flex-wrap justify-content-start gap-2">
           {
-              renderedPosts.map(({ id, title, body }) => <div key={id} className="card" style={{ width: "33%" }} >
-                  <div className="card-body"><h3 className="">{title}</h3>
-                      <p className="">{ body }</p>
-                  </div></div>)
+            renderedPosts.map(({ id, title, body }) => <Post key={id} id={id} title={title} body={body} />)
           }
         </div>
-    </div>
+    </>
   )
 }
 
